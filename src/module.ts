@@ -11,7 +11,7 @@ export interface ModuleOptions {
   includeParams: string[]
   excludePaths: string[]
   ignoreHash: boolean
-  consentMarker: string
+  consentMarker?: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -33,18 +33,15 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
-    nuxt.options.runtimeConfig.public.wideangle = defu(
-      nuxt.options.runtimeConfig.public.wideangle,
-      options,
-    )
-
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
 
+    nuxt.options.runtimeConfig.public.wideangle = defu(
+      nuxt.options.runtimeConfig.public.wideangle ||= {},
+      { ...options })
     logger.info('Adding Wide Angle Analytics (useWideAngle) import')
     addImportsDir(resolver.resolve('./runtime/composables'))
 
     logger.info('Adding Wide Angle Analytics runtime plugin')
     addPlugin(resolver.resolve('./runtime/plugin.client'))
-
   },
 })

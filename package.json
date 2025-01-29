@@ -38,24 +38,25 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm lint && npm test && npm prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run prepack && changelogen --release && npm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.13.2",
+    "@nuxt/kit": "^3.15.3",
     "wideangle-vuejs": "2.0.0",
-    "defu": "^6.1.2"
+    "defu": "^6.1.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.3.13",
-    "@nuxt/module-builder": "^0.8.1",
-    "@nuxt/schema": "^3.12.4",
-    "@types/node": "^18",
-    "changelogen": "^0.5.3",
-    "eslint": "^9.17.0",
+    "@nuxt/eslint-config": "^0.7.5",
+    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.15.3",
+    "@types/node": "latest",
+    "changelogen": "^0.5.7",
+    "eslint": "^9.19.0",
     "nuxt": "^3.13.2",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "vue-tsc": "^2.2.0"
   }
 }

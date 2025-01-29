@@ -1,8 +1,12 @@
 {
   "name": "wideangle-nuxt",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "description": "Wide Angle Analytics module for Nuxt",
-  "repository": "wideangleanalytics/wideangle-nuxt",
+  "homepage": "https://wideangle.co",
+  "repository": {
+    "type": "git",
+    "url": "https://cloud.inputobjects.eu/forge/wideangle/wideangle-nuxt.git"
+  },
   "author": "Wide Angle Analytics <developers@wideangle.co>",
   "license": "Apache-2.0",
   "type": "module",
@@ -34,19 +38,20 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "lint": "eslint ."
+    "release": "npm lint && npm test && npm prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@nuxt/kit": "^3.13.2",
-    "wideangle-vuejs": "1.0.1",
+    "wideangle-vuejs": "2.0.0",
     "defu": "^6.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.7.4",
-    "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.13.2",
-    "@nuxt/test-utils": "^3.12.0",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.3.13",
+    "@nuxt/module-builder": "^0.8.1",
+    "@nuxt/schema": "^3.12.4",
     "@types/node": "^18",
     "changelogen": "^0.5.3",
     "eslint": "^9.17.0",
